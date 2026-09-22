@@ -10,11 +10,12 @@ def parse(f_name: str) -> list[tuple[int, int, int]]:
 
 def solve() -> int:
     boxes = parse("input.txt")
-    total_paper = 0
+    total_ribbon = 0
     for l, h, w in boxes:
-        total_paper += 2*(l*w) + 2*(w*h) + 2*(h*l) + min((l*w), (w*h), (h*l))
+        s = list(sorted((l,h,w)))
+        total_ribbon += s[0] + s[0] + s[1] + s[1] + l * w * h
 
-    return total_paper
+    return total_ribbon
 
 def main():
     result = solve()
